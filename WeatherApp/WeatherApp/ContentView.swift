@@ -16,7 +16,6 @@ struct ContentView: View {
                 .padding()
         }.onAppear {
             weather.getWeather(city: "Tampa")
-            print("Hey this is working")
         }
     }
 }
