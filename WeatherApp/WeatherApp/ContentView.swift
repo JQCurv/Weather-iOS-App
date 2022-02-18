@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    let weather = WeatherGetter()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack{
+            Text("Hello, world!")
+                .padding()
+        }.onAppear {
+            weather.getWeather(city: "Tampa")
+        }
     }
 }
 
