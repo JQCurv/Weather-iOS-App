@@ -81,7 +81,7 @@ class WeatherGetter {
     }
     
     func printWeatherData () {
-        print("\n\nPrinting weather data...")
+        print("\n\nPRINTING WEATHER DATA...")
         
         print("\nLongitude: \(longitude)")
         print("Latitude: \(latitude)")
@@ -164,22 +164,34 @@ class WeatherGetter {
 //                    print("Latitude: \(weatherData["coord"]!["lat"]!!)")
                     
                     //weather
-                    print("\nWeather ID: \((weatherData["weather"]![0]! as! [String:AnyObject])["id"]!)")
-                    print("Weather main: \((weatherData["weather"]![0]! as! [String:AnyObject])["main"]!)")
-                    print("Weather description: \((weatherData["weather"]![0]! as! [String:AnyObject])["description"]!)")
-                    print("Weather icon: \((weatherData["weather"]![0]! as! [String:AnyObject])["icon"]!)")
+                    self.weatherID = ((weatherData["weather"]![0]! as! [String:AnyObject])["id"]!).integerValue
+                    self.weatherMain = (weatherData["weather"]![0]! as! [String:AnyObject])["main"]! as! String
+                    self.weatherDescription = (weatherData["weather"]![0]! as! [String:AnyObject])["description"]! as! String
+                    self.weatherIcon = (weatherData["weather"]![0]! as! [String:AnyObject])["description"]! as! String
+//                    print("\nWeather ID: \((weatherData["weather"]![0]! as! [String:AnyObject])["id"]!)")
+//                    print("Weather main: \((weatherData["weather"]![0]! as! [String:AnyObject])["main"]!)")
+//                    print("Weather description: \((weatherData["weather"]![0]! as! [String:AnyObject])["description"]!)")
+//                    print("Weather icon: \((weatherData["weather"]![0]! as! [String:AnyObject])["icon"]!)")
                     
                     //base
-                    print("\nBase: \(weatherData["base"]!)")
+                    self.base = weatherData["base"]! as! String
+//                    print("\nBase: \(weatherData["base"]!)")
                     
                     //main temp data
-                    print("\nTemperature: \(weatherData["main"]!["temp"]!!)")
-                    print("Feels like: \(weatherData["main"]!["feels_like"]!!)")
-                    print("Temp min: \(weatherData["main"]!["temp_min"]!!)")
-                    print("Temp max: \(weatherData["main"]!["temp_max"]!!)")
-                    print("Pressure: \(weatherData["main"]!["pressure"]!!)")
-                    print("Humidity: \(weatherData["main"]!["humidity"]!!)")
+                    self.temp = weatherData["main"]!["temp"]!! as! Double
+                    self.feelsLike = weatherData["main"]!["feels_like"]!! as! Double
+                    self.tempMin = weatherData["main"]!["temp_min"]!! as! Double
+                    self.tempMax = weatherData["main"]!["temp_max"]!! as! Double
+                    self.pressure = weatherData["main"]!["pressure"]!! as! Double
+                    self.humidity = weatherData["main"]!["humidity"]!! as! Double
+//                    print("\nTemperature: \(weatherData["main"]!["temp"]!!)")
+//                    print("Feels like: \(weatherData["main"]!["feels_like"]!!)")
+//                    print("Temp min: \(weatherData["main"]!["temp_min"]!!)")
+//                    print("Temp max: \(weatherData["main"]!["temp_max"]!!)")
+//                    print("Pressure: \(weatherData["main"]!["pressure"]!!)")
+//                    print("Humidity: \(weatherData["main"]!["humidity"]!!)")
                     
+                    //continue from here!!!!
                     //visibility
                     print("\nVisibility: \(weatherData["visibility"]!)")
 
