@@ -34,7 +34,7 @@ class WeatherGetter {
     public var windSpeed: Double
     public var windDegree: Double
     
-    public var cloudCover: [String: Double]
+    public var cloudCover: Int
     
     public var dateAndTime: Int64
     
@@ -68,7 +68,7 @@ class WeatherGetter {
         windSpeed = 0.0
         windDegree = 0.0
         
-        cloudCover = ["": 0.0]
+        cloudCover = 0
         
         dateAndTime = 0
         
@@ -193,26 +193,36 @@ class WeatherGetter {
                     
                     //continue from here!!!!
                     //visibility
-                    print("\nVisibility: \(weatherData["visibility"]!)")
+                    self.visibility = weatherData["visibility"]! as! Double
+//                    print("\nVisibility: \(weatherData["visibility"]!)")
 
                     //wind
-                    print("\nWind direction: \(weatherData["wind"]!["deg"]!!) degrees")
-                    print("Wind speed: \(weatherData["wind"]!["speed"]!!)")
+                    self.windDegree = weatherData["wind"]!["deg"]!! as! Double
+                    self.windSpeed = weatherData["wind"]!["speed"]!! as! Double
+//                    print("\nWind direction: \(weatherData["wind"]!["deg"]!!) degrees")
+//                    print("Wind speed: \(weatherData["wind"]!["speed"]!!)")
 
                     //clouds
-                    print("\nCloud cover: \(weatherData["clouds"]!["all"]!!)")
+                    self.cloudCover = weatherData["clouds"]!["all"]!! as! Int
+//                    print("\nCloud cover: \(weatherData["clouds"]!["all"]!!)")
                     
                     //date and time
-                    print("\nDate and time: \(weatherData["dt"]!)")
+                    self.dateAndTime = weatherData["dt"]! as! Int64
+//                    print("\nDate and time: \(weatherData["dt"]!)")
 
                     //city
-                    print("\nCity: \(weatherData["name"]!)")
+                    self.city = weatherData["name"]! as! String
+//                    print("\nCity: \(weatherData["name"]!)")
                     
                     //system readouts
-                    print("\nCountry: \(weatherData["sys"]!["country"]!!)")
-                    print("Sunrise: \(weatherData["sys"]!["sunrise"]!!)")
-                    print("Sunset: \(weatherData["sys"]!["sunset"]!!)")
-                    print("Timzone: \(weatherData["timezone"]!)")
+                    self.country = weatherData["sys"]!["country"]!! as! String
+                    self.sunrise = weatherData["sys"]!["sunrise"]!! as! Int64
+                    self.sunset = weatherData["sys"]!["sunset"]!! as! Int64
+                    self.timezone = weatherData["timezone"]! as! Int
+//                    print("\nCountry: \(weatherData["sys"]!["country"]!!)")
+//                    print("Sunrise: \(weatherData["sys"]!["sunrise"]!!)")
+//                    print("Sunset: \(weatherData["sys"]!["sunset"]!!)")
+//                    print("Timzone: \(weatherData["timezone"]!)")
                 }
                 catch let jsonError as NSError {
                     // An error occurred while trying to convert the data into a Swift dictionary.
