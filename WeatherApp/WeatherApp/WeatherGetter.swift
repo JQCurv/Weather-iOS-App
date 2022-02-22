@@ -80,6 +80,47 @@ class WeatherGetter {
         timezone = 0
     }
     
+    func getWeather(city: String) {
+        // This is a pretty simple networking task, so the shared session will do.
+        let session = URLSession.shared
+        let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)")!
+        
+        // The data task retrieves the data.
+        let dataTask = session.dataTask(with: weatherRequestURL as URL) {
+            (data: Data?, response: URLResponse?, error: Error?) in
+            if let error = error {
+                // Case 1: Error
+                // We got some kind of error while trying to get data from the server.
+                print("Error:\n\(error)")
+            }
+            else {
+                // Case 2: Success
+                // We got a response from the server!
+                
+                do {
+                    // Try to convert that data into a Swift dictionary
+                    let weatherData = try JSONSerialization.jsonObject(
+                        with: data!,
+                        options: .mutableContainers) as! [String: AnyObject]
+                    
+                    // If we made it to this point, we've successfully converted the
+                    // JSON-formatted weather data into a Swift dictionary.
+                    
+                    //Assign all dictonary values to their respective values in the class
+                    self.assignValues(weatherData: weatherData)
+                }
+                catch let jsonError as NSError {
+                    // An error occurred while trying to convert the data into a Swift dictionary.
+                    print("JSON error description: \(jsonError.description)")
+                }
+            }
+        }
+        
+        // The data task is set up...launch it!
+        dataTask.resume()
+    }
+
+    
     func printWeatherData () {
         print("\n\nPRINTING WEATHER DATA...")
         
@@ -126,114 +167,48 @@ class WeatherGetter {
         print("Timzone: \(timezone)")
     }
     
-    
-    func getWeather(city: String) {
+    func assignValues (weatherData: [String: AnyObject]) {
+        //coordinates
+        self.longitude = weatherData["coord"]!["lon"]!! as! Double
+        self.latitude = weatherData["coord"]!["lon"]!! as! Double
         
-        // This is a pretty simple networking task, so the shared session will do.
-        let session = URLSession.shared
-        let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)")!
-
-        // The data task retrieves the data.
-        let dataTask = session.dataTask(with: weatherRequestURL as URL) {
-            (data: Data?, response: URLResponse?, error: Error?) in
-            if let error = error {
-                // Case 1: Error
-                // We got some kind of error while trying to get data from the server.
-                print("Error:\n\(error)")
-            }
-            else {
-                // Case 2: Success
-                // We got a response from the server!
-//                let dataString = String(data: data!, encoding: String.Encoding.utf8)
-//                print("Human-readable data:\n\(dataString!)")
-                
-                do {
-                    // Try to convert that data into a Swift dictionary
-                    let weatherData = try JSONSerialization.jsonObject(
-                        with: data!,
-                        options: .mutableContainers) as! [String: AnyObject]
-                    
-                    // If we made it to this point, we've successfully converted the
-                    // JSON-formatted weather data into a Swift dictionary.
-
-                    //Assigned all dictonary values to their respective values in the class
-                    //cordinates
-                    self.longitude = weatherData["coord"]!["lon"]!! as! Double
-                    self.latitude = weatherData["coord"]!["lon"]!! as! Double
-//                    print("\n\nLongitude: \(weatherData["coord"]!["lon"]!!)")
-//                    print("Latitude: \(weatherData["coord"]!["lat"]!!)")
-                    
-                    //weather
-                    self.weatherID = ((weatherData["weather"]![0]! as! [String:AnyObject])["id"]!).integerValue
-                    self.weatherMain = (weatherData["weather"]![0]! as! [String:AnyObject])["main"]! as! String
-                    self.weatherDescription = (weatherData["weather"]![0]! as! [String:AnyObject])["description"]! as! String
-                    self.weatherIcon = (weatherData["weather"]![0]! as! [String:AnyObject])["description"]! as! String
-//                    print("\nWeather ID: \((weatherData["weather"]![0]! as! [String:AnyObject])["id"]!)")
-//                    print("Weather main: \((weatherData["weather"]![0]! as! [String:AnyObject])["main"]!)")
-//                    print("Weather description: \((weatherData["weather"]![0]! as! [String:AnyObject])["description"]!)")
-//                    print("Weather icon: \((weatherData["weather"]![0]! as! [String:AnyObject])["icon"]!)")
-                    
-                    //base
-                    self.base = weatherData["base"]! as! String
-//                    print("\nBase: \(weatherData["base"]!)")
-                    
-                    //main temp data
-                    self.temp = weatherData["main"]!["temp"]!! as! Double
-                    self.feelsLike = weatherData["main"]!["feels_like"]!! as! Double
-                    self.tempMin = weatherData["main"]!["temp_min"]!! as! Double
-                    self.tempMax = weatherData["main"]!["temp_max"]!! as! Double
-                    self.pressure = weatherData["main"]!["pressure"]!! as! Double
-                    self.humidity = weatherData["main"]!["humidity"]!! as! Double
-//                    print("\nTemperature: \(weatherData["main"]!["temp"]!!)")
-//                    print("Feels like: \(weatherData["main"]!["feels_like"]!!)")
-//                    print("Temp min: \(weatherData["main"]!["temp_min"]!!)")
-//                    print("Temp max: \(weatherData["main"]!["temp_max"]!!)")
-//                    print("Pressure: \(weatherData["main"]!["pressure"]!!)")
-//                    print("Humidity: \(weatherData["main"]!["humidity"]!!)")
-                    
-                    //continue from here!!!!
-                    //visibility
-                    self.visibility = weatherData["visibility"]! as! Double
-//                    print("\nVisibility: \(weatherData["visibility"]!)")
-
-                    //wind
-                    self.windDegree = weatherData["wind"]!["deg"]!! as! Double
-                    self.windSpeed = weatherData["wind"]!["speed"]!! as! Double
-//                    print("\nWind direction: \(weatherData["wind"]!["deg"]!!) degrees")
-//                    print("Wind speed: \(weatherData["wind"]!["speed"]!!)")
-
-                    //clouds
-                    self.cloudCover = weatherData["clouds"]!["all"]!! as! Int
-//                    print("\nCloud cover: \(weatherData["clouds"]!["all"]!!)")
-                    
-                    //date and time
-                    self.dateAndTime = weatherData["dt"]! as! Int64
-//                    print("\nDate and time: \(weatherData["dt"]!)")
-
-                    //city
-                    self.city = weatherData["name"]! as! String
-//                    print("\nCity: \(weatherData["name"]!)")
-                    
-                    //system readouts
-                    self.country = weatherData["sys"]!["country"]!! as! String
-                    self.sunrise = weatherData["sys"]!["sunrise"]!! as! Int64
-                    self.sunset = weatherData["sys"]!["sunset"]!! as! Int64
-                    self.timezone = weatherData["timezone"]! as! Int
-//                    print("\nCountry: \(weatherData["sys"]!["country"]!!)")
-//                    print("Sunrise: \(weatherData["sys"]!["sunrise"]!!)")
-//                    print("Sunset: \(weatherData["sys"]!["sunset"]!!)")
-//                    print("Timzone: \(weatherData["timezone"]!)")
-                }
-                catch let jsonError as NSError {
-                    // An error occurred while trying to convert the data into a Swift dictionary.
-                    print("JSON error description: \(jsonError.description)")
-                }
-
-            }
-        }
+        //weather
+        self.weatherID = ((weatherData["weather"]![0]! as! [String:AnyObject])["id"]!).integerValue
+        self.weatherMain = (weatherData["weather"]![0]! as! [String:AnyObject])["main"]! as! String
+        self.weatherDescription = (weatherData["weather"]![0]! as! [String:AnyObject])["description"]! as! String
+        self.weatherIcon = (weatherData["weather"]![0]! as! [String:AnyObject])["description"]! as! String
         
-        // The data task is set up...launch it!
-        dataTask.resume()
+        //base
+        self.base = weatherData["base"]! as! String
+        
+        //main temp data
+        self.temp = weatherData["main"]!["temp"]!! as! Double
+        self.feelsLike = weatherData["main"]!["feels_like"]!! as! Double
+        self.tempMin = weatherData["main"]!["temp_min"]!! as! Double
+        self.tempMax = weatherData["main"]!["temp_max"]!! as! Double
+        self.pressure = weatherData["main"]!["pressure"]!! as! Double
+        self.humidity = weatherData["main"]!["humidity"]!! as! Double
+        
+        //visibility
+        self.visibility = weatherData["visibility"]! as! Double
+        
+        //wind
+        self.windDegree = weatherData["wind"]!["deg"]!! as! Double
+        self.windSpeed = weatherData["wind"]!["speed"]!! as! Double
+        
+        //clouds
+        self.cloudCover = weatherData["clouds"]!["all"]!! as! Int
+        
+        //date and time
+        self.dateAndTime = weatherData["dt"]! as! Int64
+        
+        //city
+        self.city = weatherData["name"]! as! String
+        
+        //system readouts
+        self.country = weatherData["sys"]!["country"]!! as! String
+        self.sunrise = weatherData["sys"]!["sunrise"]!! as! Int64
+        self.sunset = weatherData["sys"]!["sunset"]!! as! Int64
+        self.timezone = weatherData["timezone"]! as! Int
     }
-    
 }
