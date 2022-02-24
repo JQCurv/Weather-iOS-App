@@ -17,6 +17,10 @@ struct ContentView: View {
         }.onAppear {
             weather.getWeather(city: "Tampa")
         }
+        .onTapGesture {
+            weather.getWeather(city: "Toronto")
+            weather.printWeatherData()
+        }
     }
 }
 
