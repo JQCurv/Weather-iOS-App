@@ -21,21 +21,17 @@ struct ContentView: View {
         VStack{
             Text(city)
                 .padding()
-            Text("\(temp, specifier: "%.1f")ºC")
+            TempText(temp: $temp)
                 .padding()
             Image(systemName: weatherImage)
                 .padding()
             HStack {
-                Text("\(lowTemp, specifier: "%.1f")ºC")
-                Text("\(highTemp, specifier: "%.1f")ºC")
+                TempText(temp: $lowTemp)
+                TempText(temp: $highTemp)
             }
             .padding()
             HStack {
                 Button ("Toronto") {
-                    hasChanged.toggle()
-                    hasChanged2.toggle()
-                }
-                .onChange(of: hasChanged) { newValue in
                     city = "Toronto"
                     weather.getWeather(city: city)
                     

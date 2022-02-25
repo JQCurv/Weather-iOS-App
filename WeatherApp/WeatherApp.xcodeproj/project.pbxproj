@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		246F3D2427C888FD006F946D /* TempText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F3D2327C888FD006F946D /* TempText.swift */; };
 		24D856BC27BCA94F0096BB7C /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D856BB27BCA94F0096BB7C /* WeatherAppApp.swift */; };
 		24D856BE27BCA94F0096BB7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D856BD27BCA94F0096BB7C /* ContentView.swift */; };
 		24D856C027BCA9510096BB7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24D856BF27BCA9510096BB7C /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		246F3D2327C888FD006F946D /* TempText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempText.swift; sourceTree = "<group>"; };
 		24B8FEED27BF52F2008AB2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		24D856B827BCA94F0096BB7C /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D856BB27BCA94F0096BB7C /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
@@ -38,6 +40,7 @@
 		24D856AF27BCA94F0096BB7C = {
 			isa = PBXGroup;
 			children = (
+				246F3D2327C888FD006F946D /* TempText.swift */,
 				24D856BA27BCA94F0096BB7C /* WeatherApp */,
 				24D856B927BCA94F0096BB7C /* Products */,
 			);
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				246F3D2427C888FD006F946D /* TempText.swift in Sources */,
 				24D856BE27BCA94F0096BB7C /* ContentView.swift in Sources */,
 				24D856CA27BCAA9D0096BB7C /* WeatherGetter.swift in Sources */,
 				24D856BC27BCA94F0096BB7C /* WeatherAppApp.swift in Sources */,
