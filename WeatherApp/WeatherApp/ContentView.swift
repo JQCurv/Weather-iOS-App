@@ -9,11 +9,63 @@ import SwiftUI
 
 struct ContentView: View {
     let weather = WeatherGetter()
+    @State var hasChanged: Bool = false
+    @State var hasChanged2: Bool = false
+    @State var city: String = "Toronto"
+    @State var temp: Double = 0.0
+    @State var lowTemp: Double = 0.0
+    @State var highTemp: Double = 0.0
+    @State var weatherImage: String = "cloud.fill"
     
     var body: some View {
         VStack{
-            Text("Hello, world!")
+            Text(city)
                 .padding()
+            Text("\(temp, specifier: "%.1f")ºC")
+                .padding()
+            Image(systemName: weatherImage)
+                .padding()
+            HStack {
+                Text("\(lowTemp, specifier: "%.1f")ºC")
+                Text("\(highTemp, specifier: "%.1f")ºC")
+            }
+            .padding()
+            HStack {
+                Button ("Toronto") {
+                    hasChanged.toggle()
+                    hasChanged2.toggle()
+                }
+                .onChange(of: hasChanged) { newValue in
+                    city = "Toronto"
+                    weather.getWeather(city: city)
+                    
+                    temp = weather.temp
+                    lowTemp = weather.tempMin
+                    highTemp = weather.tempMax
+                }
+                Button ("London") {
+                    city = "London"
+                    weather.getWeather(city: city)
+                    
+                    temp = weather.temp
+                    lowTemp = weather.tempMin
+                    highTemp = weather.tempMax
+                    
+                    weather.printWeatherData()
+                }
+                Button ("Tampa") {
+                    city = "Tampa"
+                    weather.getWeather(city: city)
+                    
+                    temp = weather.temp
+                    lowTemp = weather.tempMin
+                    highTemp = weather.tempMax
+                    
+                    weather.printWeatherData()
+                }
+            }
+            .foregroundColor(Color(.systemGray))
+            .imageScale(.large)
         }
         .onAppear {
             weather.getWeather(city: "Toronto") {

@@ -11,6 +11,7 @@ class WeatherGetter {
     
     private let openWeatherMapBaseURL = "https://api.openweathermap.org/data/2.5/weather"
     private let openWeatherMapAPIKey = "dc46e75444b4039411cd07684b42c9a7"
+    private let units = "metric"
     
     public var longitude: Double
     public var latitude: Double
@@ -83,7 +84,7 @@ class WeatherGetter {
     func getWeather(city: String = "Toronto", afterDataLoaded: @escaping () -> Void) {
         // This is a pretty simple networking task, so the shared session will do.
         let session = URLSession.shared
-        let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)")!
+        let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)&units=\(units)")!
         
         // The data task retrieves the data.
         let dataTask = session.dataTask(with: weatherRequestURL as URL) {
