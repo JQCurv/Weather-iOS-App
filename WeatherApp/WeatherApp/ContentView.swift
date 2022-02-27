@@ -33,45 +33,34 @@ struct ContentView: View {
             HStack {
                 Button ("Toronto") {
                     city = "Toronto"
-                    weather.getWeather(city: city)
-                    
-                    temp = weather.temp
-                    lowTemp = weather.tempMin
-                    highTemp = weather.tempMax
+                    weather.getWeather(city: city) {
+                        useData()
+                    }
                 }
                 Button ("London") {
                     city = "London"
-                    weather.getWeather(city: city)
-                    
-                    temp = weather.temp
-                    lowTemp = weather.tempMin
-                    highTemp = weather.tempMax
-                    
-                    weather.printWeatherData()
+                    weather.getWeather(city: city) {
+                        useData()
+                    }
                 }
                 Button ("Tampa") {
                     city = "Tampa"
-                    weather.getWeather(city: city)
-                    
-                    temp = weather.temp
-                    lowTemp = weather.tempMin
-                    highTemp = weather.tempMax
-                    
-                    weather.printWeatherData()
+                    weather.getWeather(city: city) {
+                        useData()
+                    }
                 }
             }
             .foregroundColor(Color(.systemGray))
             .imageScale(.large)
         }
-        .onAppear {
-            weather.getWeather(city: "Toronto") {
-                toRun()
-            }
-        }
     }
     
-    func toRun() {
+    func useData() {
         weather.printWeatherData()
+        
+        temp = weather.temp
+        lowTemp = weather.tempMin
+        highTemp = weather.tempMax
     }
 }
 
