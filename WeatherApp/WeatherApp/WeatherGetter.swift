@@ -80,7 +80,7 @@ class WeatherGetter {
         timezone = 0
     }
     
-    func getWeather(city: String) {
+    func getWeather(city: String = "Toronto", afterDataLoaded: @escaping () -> Void) {
         // This is a pretty simple networking task, so the shared session will do.
         let session = URLSession.shared
         let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)")!
@@ -108,6 +108,8 @@ class WeatherGetter {
                     
                     //Assign all dictonary values to their respective values in the class
                     self.assignValues(weatherData: weatherData)
+                    
+                    afterDataLoaded()
                 }
                 catch let jsonError as NSError {
                     // An error occurred while trying to convert the data into a Swift dictionary.

@@ -14,13 +14,16 @@ struct ContentView: View {
         VStack{
             Text("Hello, world!")
                 .padding()
-        }.onAppear {
-            weather.getWeather(city: "Tampa")
         }
-        .onTapGesture {
-            weather.getWeather(city: "Toronto")
-            weather.printWeatherData()
+        .onAppear {
+            weather.getWeather(city: "Toronto") {
+                toRun()
+            }
         }
+    }
+    
+    func toRun() {
+        weather.printWeatherData()
     }
 }
 
