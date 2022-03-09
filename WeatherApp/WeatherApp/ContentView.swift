@@ -9,21 +9,58 @@ import SwiftUI
 
 struct ContentView: View {
     let weather = WeatherGetter()
+    @State var hasChanged: Bool = false
+    @State var hasChanged2: Bool = false
+    @State var city: String = "Toronto"
+    @State var temp: Double = 0.0
+    @State var lowTemp: Double = 0.0
+    @State var highTemp: Double = 0.0
+    @State var weatherImage: String = "cloud.fill"
     
     var body: some View {
         VStack{
-            Text("Hello, world!")
+            Text(city)
                 .padding()
-        }
-        .onAppear {
-            weather.getWeather(city: "Toronto") {
-                toRun()
+            TempText(temp: $temp)
+                .padding()
+            Image(systemName: weatherImage)
+                .padding()
+            HStack {
+                TempText(temp: $lowTemp)
+                TempText(temp: $highTemp)
             }
+            .padding()
+            HStack {
+                Button ("Toronto") {
+                    city = "Toronto"
+                    weather.getWeather(city: city) {
+                        useData()
+                    }
+                }
+                Button ("London") {
+                    city = "London"
+                    weather.getWeather(city: city) {
+                        useData()
+                    }
+                }
+                Button ("Tampa") {
+                    city = "Tampa"
+                    weather.getWeather(city: city) {
+                        useData()
+                    }
+                }
+            }
+            .foregroundColor(Color(.systemGray))
+            .imageScale(.large)
         }
     }
     
-    func toRun() {
+    func useData() {
         weather.printWeatherData()
+        
+        temp = weather.temp
+        lowTemp = weather.tempMin
+        highTemp = weather.tempMax
     }
 }
 
