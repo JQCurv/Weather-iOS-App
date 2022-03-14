@@ -22,7 +22,7 @@ struct FullWeatherView: View {
             TempText(temp: $curTemp)
                 .font(.system(size: 60))
             weatherImage
-            feelsLikeImage
+            feelsLikeBlock
             .padding()
             HStack(alignment: .center) {
                 Image(systemName: "thermometer")
@@ -46,7 +46,7 @@ struct FullWeatherView: View {
         )
     }
     
-    var feelsLike: some View {
+    var feelsLikeBlock: some View {
         @State var image = "wind"
         @State var feelsLikeTemp = 0.0
         @State var color = Color.blue
