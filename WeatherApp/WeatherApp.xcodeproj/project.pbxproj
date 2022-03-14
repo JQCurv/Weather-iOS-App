@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2402EA1827DFE7D60054DD26 /* WeatherImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402EA1727DFE7D60054DD26 /* WeatherImage.swift */; };
+		2402EA1A27DFEC120054DD26 /* FeelsLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402EA1927DFEC120054DD26 /* FeelsLike.swift */; };
 		241BED1927D1C896005BB887 /* ConvertingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241BED1827D1C896005BB887 /* ConvertingFunctions.swift */; };
 		246F3D2427C888FD006F946D /* TempText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F3D2327C888FD006F946D /* TempText.swift */; };
 		24C5F42227D8624500262F13 /* FullWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C5F42127D8624500262F13 /* FullWeatherView.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		2402EA1727DFE7D60054DD26 /* WeatherImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherImage.swift; sourceTree = "<group>"; };
+		2402EA1927DFEC120054DD26 /* FeelsLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelsLike.swift; sourceTree = "<group>"; };
 		241BED1827D1C896005BB887 /* ConvertingFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertingFunctions.swift; sourceTree = "<group>"; };
 		246F3D2327C888FD006F946D /* TempText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempText.swift; sourceTree = "<group>"; };
 		24B8FEED27BF52F2008AB2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				2402EA1727DFE7D60054DD26 /* WeatherImage.swift */,
+				2402EA1927DFEC120054DD26 /* FeelsLike.swift */,
 			);
 			path = WeatherViewComponents;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				24C5F42227D8624500262F13 /* FullWeatherView.swift in Sources */,
 				2402EA1827DFE7D60054DD26 /* WeatherImage.swift in Sources */,
 				24D856CA27BCAA9D0096BB7C /* WeatherGetter.swift in Sources */,
+				2402EA1A27DFEC120054DD26 /* FeelsLike.swift in Sources */,
 				24D856BC27BCA94F0096BB7C /* WeatherAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

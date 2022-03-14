@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WeatherImage: View {
     @Binding var image: String
-    @Binding var newColor: Color
+    @Binding var color: Color
 
     var body: some View {
         HStack {
@@ -17,7 +17,7 @@ struct WeatherImage: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200, height: 200)
-                .foregroundColor(newColor)
+                .foregroundColor(color)
         }
     }
 }
@@ -28,7 +28,7 @@ struct WeatherImage_Previews: PreviewProvider {
     static var previews: some View {
         WeatherImage(
             image: $image,
-            newColor: $newColor
+            color: $newColor
         )
     }
 }

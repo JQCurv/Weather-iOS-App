@@ -22,11 +22,7 @@ struct FullWeatherView: View {
             TempText(temp: $curTemp)
                 .font(.system(size: 60))
             weatherImage
-            HStack {
-                feelsLikeImage
-                TempText(temp: $feelsLike)
-                    .font(.title)
-            }
+            feelsLikeImage
             .padding()
             HStack(alignment: .center) {
                 Image(systemName: "thermometer")
@@ -46,18 +42,20 @@ struct FullWeatherView: View {
         
         return WeatherImage(
             image: $image,
-            newColor: $newColor
+            color: $newColor
         )
     }
     
-    var feelsLikeImage: some View {
-        HStack {
-            Image(systemName: "wind")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 36)
-                .foregroundColor(.blue)
-        }
+    var feelsLike: some View {
+        @State var image = "wind"
+        @State var feelsLikeTemp = 0.0
+        @State var color = Color.blue
+        
+        return FeelsLike(
+            image: $image,
+            feelsLikeTemp: $feelsLikeTemp,
+            color: $color
+        )
     }
 }
 
