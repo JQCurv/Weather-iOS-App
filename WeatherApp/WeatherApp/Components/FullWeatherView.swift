@@ -41,13 +41,13 @@ struct FullWeatherView: View {
     }
     
     var weatherImage: some View {
-        HStack {
-            Image(systemName: "cloud.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 200, height: 200)
-                .foregroundColor(.gray)
-        }
+        @State var image = "cloud.fill"
+        @State var newColor = Color.gray
+        
+        return WeatherImage(
+            image: $image,
+            newColor: $newColor
+        )
     }
     
     var feelsLikeImage: some View {
