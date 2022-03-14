@@ -17,7 +17,7 @@ struct TempText: View {
 }
 
 struct TempText_Previews: PreviewProvider {
-    @State static var temp = 0.0
+    @State static var temp = 12.0
     
     static var previews: some View {
         TempText(temp: $temp)

@@ -26,7 +26,7 @@ struct FeelsLike: View {
 
 struct FeelsLike_Previews: PreviewProvider {
     @State static var image = "wind"
-    @State static var feelsLikeTemp = 0.0
+    @State static var feelsLikeTemp = 5.0
     @State static var color = Color.blue
     static var previews: some View {
         FeelsLike(

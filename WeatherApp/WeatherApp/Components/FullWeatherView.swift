@@ -24,15 +24,10 @@ struct FullWeatherView: View {
             weatherImage
             feelsLikeBlock
             .padding()
-            HStack(alignment: .center) {
-                Image(systemName: "thermometer")
-                    .foregroundColor(.blue)
-                TempText(temp: $lowTemp)
-                TempText(temp: $highTemp)
-                Image(systemName: "thermometer")
-                    .foregroundColor(.red)
-            }
-            .font(.title3)
+            HighAndLowTemps(
+                lowTemp: $lowTemp,
+                highTemp: $highTemp
+            )
         }
     }
     
