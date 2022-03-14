@@ -22,42 +22,35 @@ struct FullWeatherView: View {
             TempText(temp: $curTemp)
                 .font(.system(size: 60))
             weatherImage
-            HStack {
-                feelsLikeImage
-                TempText(temp: $feelsLike)
-                    .font(.title)
-            }
+            feelsLikeBlock
             .padding()
-            HStack(alignment: .center) {
-                Image(systemName: "thermometer")
-                    .foregroundColor(.blue)
-                TempText(temp: $lowTemp)
-                TempText(temp: $highTemp)
-                Image(systemName: "thermometer")
-                    .foregroundColor(.red)
-            }
-            .font(.title3)
+            HighAndLowTemps(
+                lowTemp: $lowTemp,
+                highTemp: $highTemp
+            )
         }
     }
     
     var weatherImage: some View {
-        HStack {
-            Image(systemName: "cloud.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 200, height: 200)
-                .foregroundColor(.gray)
-        }
+        @State var image = "cloud.fill"
+        @State var newColor = Color.gray
+        
+        return WeatherImage(
+            image: $image,
+            color: $newColor
+        )
     }
     
-    var feelsLikeImage: some View {
-        HStack {
-            Image(systemName: "wind")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 36)
-                .foregroundColor(.blue)
-        }
+    var feelsLikeBlock: some View {
+        @State var image = "wind"
+        @State var feelsLikeTemp = 0.0
+        @State var color = Color.blue
+        
+        return FeelsLike(
+            image: $image,
+            feelsLikeTemp: $feelsLikeTemp,
+            color: $color
+        )
     }
 }
 
