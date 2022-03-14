@@ -57,13 +57,21 @@
 			path = WeatherViewComponents;
 			sourceTree = "<group>";
 		};
+		2402EA1D27DFF1E30054DD26 /* WeatherViews */ = {
+			isa = PBXGroup;
+			children = (
+				24C5F42127D8624500262F13 /* FullWeatherView.swift */,
+			);
+			path = WeatherViews;
+			sourceTree = "<group>";
+		};
 		24BA260727CD25F3006FB371 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2402EA1D27DFF1E30054DD26 /* WeatherViews */,
 				2402EA1627DFE7BA0054DD26 /* WeatherViewComponents */,
 				246F3D2327C888FD006F946D /* TempText.swift */,
 				241BED1827D1C896005BB887 /* ConvertingFunctions.swift */,
-				24C5F42127D8624500262F13 /* FullWeatherView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
