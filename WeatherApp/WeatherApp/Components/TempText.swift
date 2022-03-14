@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct TempText: View {
+    //The temperature value
     @Binding var temp: Double
     
     var body: some View {
-        Text("\(temp, specifier: "%.1f")ºC")
+        Text("\(temp, specifier: "%.0f")ºC")
     }
 }
 
