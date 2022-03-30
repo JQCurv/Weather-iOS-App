@@ -10,6 +10,7 @@ import SwiftUI
 struct HighAndLowTemps: View {
     @Binding var lowTemp: Double
     @Binding var highTemp: Double
+    var font: Font = Font.body
     var body: some View {
         HStack(alignment: .center) {
             Image(systemName: "thermometer")
@@ -19,18 +20,20 @@ struct HighAndLowTemps: View {
             Image(systemName: "thermometer")
                 .foregroundColor(.red)
         }
-        .font(.title3)
-
+        .font(font)
     }
 }
 
 struct HighAndLowTemps_Previews: PreviewProvider {
     @State static var lowTemp = -1.0
     @State static var highTemp = 1.0
+    static var font = Font.title3
+    
     static var previews: some View {
         HighAndLowTemps(
             lowTemp: $lowTemp,
-            highTemp: $highTemp
+            highTemp: $highTemp,
+            font: font
         )
     }
 }
