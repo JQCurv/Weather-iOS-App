@@ -16,13 +16,10 @@ struct FeelsLike: View {
     var body: some View {
         HStack {
             Image(systemName: image)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 30)
                 .foregroundColor(color)
             TempText(temp: $feelsLikeTemp)
-                .font(font)
         }
+        .font(font)
     }
 }
 
@@ -31,6 +28,7 @@ struct FeelsLike_Previews: PreviewProvider {
     @State static var feelsLikeTemp = 5.0
     @State static var color = Color.blue
     static var font = Font.title
+    
     static var previews: some View {
         FeelsLike(
             image: $image,

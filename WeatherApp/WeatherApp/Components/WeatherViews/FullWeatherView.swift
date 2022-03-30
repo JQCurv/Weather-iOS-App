@@ -26,7 +26,8 @@ struct FullWeatherView: View {
             .padding()
             HighAndLowTemps(
                 lowTemp: $lowTemp,
-                highTemp: $highTemp
+                highTemp: $highTemp,
+                font: Font.title3
             )
         }
     }
@@ -49,7 +50,8 @@ struct FullWeatherView: View {
         return FeelsLike(
             image: $image,
             feelsLikeTemp: $feelsLikeTemp,
-            color: $color
+            color: $color,
+            font: Font.title
         )
     }
 }
