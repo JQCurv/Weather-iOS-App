@@ -22,13 +22,11 @@ struct MiniWeatherView: View {
                     .frame(alignment: .leading)
                 Spacer()
             }
-            .padding()
             Spacer(minLength: 0)
             HStack {
                 TempText(temp: $curTemp)
                     .font(.title)
                     .frame(alignment: .leading)
-                    .padding()
                 Spacer()
                 feelsLikeBlock
                     .frame(alignment: .center)
@@ -38,22 +36,19 @@ struct MiniWeatherView: View {
                     highTemp: $highTemp
                 )
                     .frame(alignment: .trailing)
-                    .padding()
+                    .padding(.vertical)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: 100)
-        .padding(.horizontal, 16)
-        .padding(.vertical)
     }
     
     var feelsLikeBlock: some View {
         @State var image = "wind"
-        @State var feelsLikeTemp = 0.0
         @State var color = Color.blue
         
         return FeelsLike(
             image: $image,
-            feelsLikeTemp: $feelsLikeTemp,
+            feelsLikeTemp: $feelsLike,
             color: $color
         )
     }
