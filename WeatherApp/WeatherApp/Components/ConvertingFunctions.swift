@@ -12,6 +12,7 @@ func celciusToFarenheit (tempCel: Double) -> Double {
 }
 
 func unixToDate (unixTime: Int64) {
+    //TODO: Get just the hour and minute from unixTime
     let epocTime = TimeInterval(unixTime)
     
     let myDate = NSDate(timeIntervalSince1970: epocTime)

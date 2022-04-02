@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WeatherImage: View {
+    //TODO: Get weather image to display image based on JSON data
     @Binding var image: String
     @Binding var color: Color
 

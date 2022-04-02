@@ -12,12 +12,20 @@ struct TempText: View {
     @Binding var temp: Double
     
     var body: some View {
-        Text("\(temp, specifier: "%.0f")ºC")
+        Text("\(negZeroCheck, specifier: "%.0f")ºC")
+    }
+    
+    //Variable prevents the glitch of -0 appearing
+    var negZeroCheck: Double {
+        if temp < 0 && temp >= -0.5 {
+            return -temp
+        }
+        return temp
     }
 }
 
 struct TempText_Previews: PreviewProvider {
-    @State static var temp = 12.0
+    @State static var temp = -12.0
     
     static var previews: some View {
         TempText(temp: $temp)

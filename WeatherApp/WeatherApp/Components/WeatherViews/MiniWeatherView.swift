@@ -43,13 +43,9 @@ struct MiniWeatherView: View {
     }
     
     var feelsLikeBlock: some View {
-        @State var image = "wind"
-        @State var color = Color.blue
-        
-        return FeelsLike(
-            image: $image,
-            feelsLikeTemp: $feelsLike,
-            color: $color
+        FeelsLike(
+            curTemp: $curTemp,
+            feelsLikeTemp: $feelsLike
         )
     }
 }

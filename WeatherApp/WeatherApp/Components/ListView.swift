@@ -15,6 +15,7 @@ struct ListView: View {
         //Need navigation view for nav link to work
         NavigationView {
             cityList
+                .navigationTitle("Weather")
         }
     }
     

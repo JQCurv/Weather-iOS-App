@@ -29,6 +29,9 @@ struct FullWeatherView: View {
                 highTemp: $highTemp,
                 font: Font.title3
             )
+            //TODO: Add in sunrise/sunset
+            //TODO: Show timezone
+            Spacer(minLength: 16)
         }
     }
     
@@ -43,15 +46,9 @@ struct FullWeatherView: View {
     }
     
     var feelsLikeBlock: some View {
-        @State var image = "wind"
-        @State var feelsLikeTemp = 0.0
-        @State var color = Color.blue
-        
-        return FeelsLike(
-            image: $image,
-            feelsLikeTemp: $feelsLikeTemp,
-            color: $color,
-            font: Font.title
+        FeelsLike(
+            curTemp: $curTemp,
+            feelsLikeTemp: $feelsLike
         )
     }
 }
