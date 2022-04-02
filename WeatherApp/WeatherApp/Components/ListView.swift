@@ -12,10 +12,23 @@ struct ListView: View {
     
     @ViewBuilder
     var body: some View {
+        //Need navigation view for nav link to work
+        NavigationView {
+            cityList
+        }
+    }
+    
+    var cityList: some View {
         List {
             ForEach (0..<viewModel.cities.count, id: \.self) { index in
-                Button {
-                    viewModel.weather.printWeatherData()
+                NavigationLink {
+                    FullWeatherView(
+                        city: $viewModel.cities[index],
+                        curTemp: $viewModel.temps[index],
+                        feelsLike: $viewModel.feelsLikeTemps[index],
+                        lowTemp: $viewModel.lowTemps[index],
+                        highTemp: $viewModel.highTemps[index]
+                    )
                 } label: {
                     MiniWeatherView(
                         city: $viewModel.cities[index],
