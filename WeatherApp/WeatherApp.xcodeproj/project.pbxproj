@@ -13,6 +13,7 @@
 		2402EA1F27DFF2480054DD26 /* MiniWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402EA1E27DFF2480054DD26 /* MiniWeatherView.swift */; };
 		241BED1927D1C896005BB887 /* ConvertingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241BED1827D1C896005BB887 /* ConvertingFunctions.swift */; };
 		241F514C27F8BFE400F482F3 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241F514B27F8BFE400F482F3 /* ListView.swift */; };
+		241F514E27F8C18C00F482F3 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241F514D27F8C18C00F482F3 /* ListViewModel.swift */; };
 		246F3D2427C888FD006F946D /* TempText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246F3D2327C888FD006F946D /* TempText.swift */; };
 		24C5F42227D8624500262F13 /* FullWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C5F42127D8624500262F13 /* FullWeatherView.swift */; };
 		24D856BC27BCA94F0096BB7C /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D856BB27BCA94F0096BB7C /* WeatherAppApp.swift */; };
@@ -29,6 +30,7 @@
 		2402EA1E27DFF2480054DD26 /* MiniWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniWeatherView.swift; sourceTree = "<group>"; };
 		241BED1827D1C896005BB887 /* ConvertingFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertingFunctions.swift; sourceTree = "<group>"; };
 		241F514B27F8BFE400F482F3 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		241F514D27F8C18C00F482F3 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		246F3D2327C888FD006F946D /* TempText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempText.swift; sourceTree = "<group>"; };
 		24B8FEED27BF52F2008AB2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		24C5F42127D8624500262F13 /* FullWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullWeatherView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				246F3D2327C888FD006F946D /* TempText.swift */,
 				241BED1827D1C896005BB887 /* ConvertingFunctions.swift */,
 				241F514B27F8BFE400F482F3 /* ListView.swift */,
+				241F514D27F8C18C00F482F3 /* ListViewModel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			files = (
 				241BED1927D1C896005BB887 /* ConvertingFunctions.swift in Sources */,
 				246F3D2427C888FD006F946D /* TempText.swift in Sources */,
+				241F514E27F8C18C00F482F3 /* ListViewModel.swift in Sources */,
 				24D856BE27BCA94F0096BB7C /* ContentView.swift in Sources */,
 				2402EA1C27DFEF2F0054DD26 /* HighAndLowTemps.swift in Sources */,
 				24C5F42227D8624500262F13 /* FullWeatherView.swift in Sources */,

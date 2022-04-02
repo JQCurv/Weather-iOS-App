@@ -8,51 +8,34 @@
 import SwiftUI
 
 struct ListView: View {
-    let weather = WeatherGetter()
-    @State var cities: [String] = ["Toronto", "Cancun", "London"]
-    @State var temps = [Double](repeating: 0.0, count: 3)
-    @State var feelsLikeTemps = [Double](repeating: 0.0, count: 3)
-    @State var lowTemps = [Double](repeating: 0.0, count: 3)
-    @State var highTemps = [Double](repeating: 0.0, count: 3)
-    @State var weatherImage: String = "cloud.fill"
+    @StateObject var viewModel: ListViewModel
     
     @ViewBuilder
     var body: some View {
         List {
-            ForEach (0...2, id: \.self) { index in
+            ForEach (0..<viewModel.cities.count, id: \.self) { index in
                 Button {
-                    print("Hello")
+                    viewModel.weather.printWeatherData()
                 } label: {
                     MiniWeatherView(
-                        city: $cities[index],
-                        curTemp: $temps[index],
-                        feelsLike: $feelsLikeTemps[index],
-                        lowTemp: $lowTemps[index],
-                        highTemp: $highTemps[index]
+                        city: $viewModel.cities[index],
+                        curTemp: $viewModel.temps[index],
+                        feelsLike: $viewModel.feelsLikeTemps[index],
+                        lowTemp: $viewModel.lowTemps[index],
+                        highTemp: $viewModel.highTemps[index]
                     )
                 }
                 .foregroundColor(.black)
                 .onAppear {
-                    weather.getWeather(city: cities[index]) {
-                        useData(i: index)
-                    }
+                    viewModel.useData(i: index)
                 }
             }
         }
-    }
-    
-    func useData(i: Int) {
-        weather.printWeatherData()
-        
-        temps[i] = weather.temp
-        feelsLikeTemps[i] = weather.feelsLike
-        lowTemps[i] = weather.tempMin
-        highTemps[i] = weather.tempMax
     }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView()
+        ListView(viewModel: ListViewModel.mock)
     }
 }

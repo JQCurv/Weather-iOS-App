@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ListView()
+        ListView(
+            viewModel: ListViewModel(
+                cities: ["Toronto", "Tampa", "Cancun", "London", "Austin"]
+            )
+        )
     }
 }
 
