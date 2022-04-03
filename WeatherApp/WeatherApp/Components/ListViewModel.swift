@@ -42,6 +42,9 @@ class ListViewModel: ObservableObject {
         case "Haze":
             self.images[i] = "sun.haze"
             self.imageColors[i] = Color.gray
+        case "Smoke":
+            self.images[i] = "smoke.fill"
+            self.imageColors[i] = Color.black
         default:
             self.images[i] = "cloud.fill"
             self.imageColors[i] = Color.yellow
