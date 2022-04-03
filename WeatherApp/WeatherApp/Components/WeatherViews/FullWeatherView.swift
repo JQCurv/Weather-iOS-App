@@ -13,6 +13,8 @@ struct FullWeatherView: View {
     @Binding var feelsLike: Double
     @Binding var lowTemp: Double
     @Binding var highTemp: Double
+    @Binding var image: String
+    @Binding var imageColor: Color
     
     var body: some View {
         VStack {
@@ -21,8 +23,16 @@ struct FullWeatherView: View {
                 .padding()
             TempText(temp: $curTemp)
                 .font(.system(size: 60))
-            weatherImage
-            feelsLikeBlock
+            WeatherImage(
+                image: $image,
+                color: $imageColor,
+                size: 150
+            )
+            FeelsLike(
+                curTemp: $curTemp,
+                feelsLikeTemp: $feelsLike,
+                font: .title2
+            )
             .padding()
             HighAndLowTemps(
                 lowTemp: $lowTemp,
@@ -34,23 +44,6 @@ struct FullWeatherView: View {
             Spacer(minLength: 16)
         }
     }
-    
-    var weatherImage: some View {
-        @State var image = "cloud.fill"
-        @State var newColor = Color.gray
-        
-        return WeatherImage(
-            image: $image,
-            color: $newColor
-        )
-    }
-    
-    var feelsLikeBlock: some View {
-        FeelsLike(
-            curTemp: $curTemp,
-            feelsLikeTemp: $feelsLike
-        )
-    }
 }
 
 struct FullWeatherView_Previews: PreviewProvider {
@@ -59,6 +52,8 @@ struct FullWeatherView_Previews: PreviewProvider {
     @State static var feelsLike = 0.0
     @State static var lowTemp = 0.0
     @State static var highTemp = 0.0
+    @State static var image = "Clouds"
+    @State static var imageColor = Color.gray
 
     static var previews: some View {
         FullWeatherView(
@@ -66,7 +61,9 @@ struct FullWeatherView_Previews: PreviewProvider {
             curTemp: $curTemp,
             feelsLike: $feelsLike,
             lowTemp: $lowTemp,
-            highTemp: $highTemp
+            highTemp: $highTemp,
+            image: $image,
+            imageColor: $imageColor
         )
     }
 }

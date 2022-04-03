@@ -28,7 +28,9 @@ struct ListView: View {
                         curTemp: $viewModel.temps[index],
                         feelsLike: $viewModel.feelsLikeTemps[index],
                         lowTemp: $viewModel.lowTemps[index],
-                        highTemp: $viewModel.highTemps[index]
+                        highTemp: $viewModel.highTemps[index],
+                        image: $viewModel.images[index],
+                        imageColor: $viewModel.imageColors[index]
                     )
                 } label: {
                     MiniWeatherView(

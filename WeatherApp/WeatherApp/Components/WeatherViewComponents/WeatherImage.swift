@@ -11,13 +11,14 @@ struct WeatherImage: View {
     //TODO: Get weather image to display image based on JSON data
     @Binding var image: String
     @Binding var color: Color
+    var size: CGFloat
 
     var body: some View {
         HStack {
             Image(systemName: image)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 200, height: 200)
+                .frame(width: size, height: size)
                 .foregroundColor(color)
         }
     }
@@ -26,10 +27,12 @@ struct WeatherImage: View {
 struct WeatherImage_Previews: PreviewProvider {
     @State static var image = "cloud.fill"
     @State static var newColor = Color.gray
+    static var size = 150.0
     static var previews: some View {
         WeatherImage(
             image: $image,
-            color: $newColor
+            color: $newColor,
+            size: size
         )
     }
 }
