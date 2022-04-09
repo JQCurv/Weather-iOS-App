@@ -17,31 +17,34 @@ struct FullWeatherView: View {
     @Binding var imageColor: Color
     
     var body: some View {
-        VStack {
-            Text("\(city)")
-                .font(.title)
+        ScrollView(showsIndicators: false) {
+            VStack {
+                Text("\(city)")
+                    .font(.title)
+                    .padding()
+                TempText(temp: $curTemp)
+                    .font(.system(size: 60))
+                WeatherImage(
+                    image: $image,
+                    color: $imageColor,
+                    size: 150
+                )
+                FeelsLike(
+                    curTemp: $curTemp,
+                    feelsLikeTemp: $feelsLike,
+                    font: .title2
+                )
                 .padding()
-            TempText(temp: $curTemp)
-                .font(.system(size: 60))
-            WeatherImage(
-                image: $image,
-                color: $imageColor,
-                size: 150
-            )
-            FeelsLike(
-                curTemp: $curTemp,
-                feelsLikeTemp: $feelsLike,
-                font: .title2
-            )
-            .padding()
-            HighAndLowTemps(
-                lowTemp: $lowTemp,
-                highTemp: $highTemp,
-                font: Font.title3
-            )
-            //TODO: Add in sunrise/sunset
-            //TODO: Show timezone
-            Spacer(minLength: 16)
+                HighAndLowTemps(
+                    lowTemp: $lowTemp,
+                    highTemp: $highTemp,
+                    font: Font.title3
+                )
+                //TODO: Add in sunrise/sunset
+                //TODO: Show timezone
+                Spacer(minLength: 16)
+            }
+            .frame(maxWidth: .infinity)
         }
     }
 }
@@ -54,7 +57,7 @@ struct FullWeatherView_Previews: PreviewProvider {
     @State static var highTemp = 0.0
     @State static var image = "Clouds"
     @State static var imageColor = Color.gray
-
+    
     static var previews: some View {
         FullWeatherView(
             city: $city,

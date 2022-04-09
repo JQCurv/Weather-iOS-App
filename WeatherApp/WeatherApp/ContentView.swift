@@ -11,7 +11,8 @@ struct ContentView: View {
     var body: some View {
         ListView(
             viewModel: ListViewModel(
-                cities: ["Toronto", "Tampa", "Cancun", "London", "Austin","Tokyo", "Shanghai", "Paris", "Rome", "Athens", "Prague", "Munich", "Mumbai", "Dubai"]
+                cities: ["Newmarket",
+                    "Toronto", "Tampa", "Cancun", "London", "Austin","Tokyo", "Shanghai", "Paris", "Rome", "Athens", "Prague", "Munich", "Mumbai", "Dubai"]
             )
         )
     }
