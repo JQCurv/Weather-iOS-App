@@ -34,7 +34,7 @@ struct MiniWeatherView: View {
                 Spacer(minLength: 0)
                 HStack {
                     TempText(temp: $curTemp)
-                        .font(.title)
+                        .font(.title2)
                         .frame(alignment: .leading)
                     Spacer()
                     FeelsLike(
