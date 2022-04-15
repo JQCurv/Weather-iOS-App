@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct FeelsLike: View {
-    @Binding var image: String
+    @Binding var curTemp: Double
     @Binding var feelsLikeTemp: Double
-    @Binding var color: Color
     var font: Font = Font.body
     
+    @ViewBuilder
     var body: some View {
         HStack {
             Image(systemName: image)
@@ -21,19 +21,33 @@ struct FeelsLike: View {
         }
         .font(font)
     }
+    
+    var color: Color {
+        if feelsLikeTemp > curTemp {
+            return Color.red
+        } else {
+            return Color.blue
+        }
+    }
+    
+    var image: String {
+        if feelsLikeTemp > curTemp {
+            return "humidity.fill"
+        } else {
+            return "wind"
+        }
+    }
 }
 
 struct FeelsLike_Previews: PreviewProvider {
-    @State static var image = "wind"
+    @State static var curTemp = 5.0
     @State static var feelsLikeTemp = 5.0
-    @State static var color = Color.blue
     static var font = Font.title
     
     static var previews: some View {
         FeelsLike(
-            image: $image,
+            curTemp: $curTemp,
             feelsLikeTemp: $feelsLikeTemp,
-            color: $color,
             font: font
         )
     }

@@ -15,6 +15,7 @@ struct ListView: View {
         //Need navigation view for nav link to work
         NavigationView {
             cityList
+                .navigationTitle("Weather")
         }
     }
     
@@ -27,7 +28,9 @@ struct ListView: View {
                         curTemp: $viewModel.temps[index],
                         feelsLike: $viewModel.feelsLikeTemps[index],
                         lowTemp: $viewModel.lowTemps[index],
-                        highTemp: $viewModel.highTemps[index]
+                        highTemp: $viewModel.highTemps[index],
+                        image: $viewModel.images[index],
+                        imageColor: $viewModel.imageColors[index]
                     )
                 } label: {
                     MiniWeatherView(
@@ -35,10 +38,11 @@ struct ListView: View {
                         curTemp: $viewModel.temps[index],
                         feelsLike: $viewModel.feelsLikeTemps[index],
                         lowTemp: $viewModel.lowTemps[index],
-                        highTemp: $viewModel.highTemps[index]
+                        highTemp: $viewModel.highTemps[index],
+                        image: $viewModel.images[index],
+                        imageColor: $viewModel.imageColors[index]
                     )
                 }
-                .foregroundColor(.black)
                 .onAppear {
                     viewModel.useData(i: index)
                 }

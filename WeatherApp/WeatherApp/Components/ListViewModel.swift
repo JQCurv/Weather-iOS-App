@@ -15,6 +15,8 @@ class ListViewModel: ObservableObject {
     @Published var feelsLikeTemps = [Double]()
     @Published var lowTemps = [Double]()
     @Published var highTemps = [Double]()
+    @Published var images = [String]()
+    @Published var imageColors = [Color]()
     
     init (cities: [String]) {
         self.cities = cities
@@ -22,6 +24,31 @@ class ListViewModel: ObservableObject {
         feelsLikeTemps = [Double](repeating: 0, count: cities.count)
         lowTemps = [Double](repeating: 0, count: cities.count)
         highTemps = [Double](repeating: 0, count: cities.count)
+        images = [String](repeating: "", count: cities.count)
+        imageColors = [Color](repeating: Color.gray, count: cities.count)
+    }
+    
+    func setWeatherImage(i: Int) {
+        switch weather.weatherMain {
+        case "Clear":
+            self.images[i] = "sun.max"
+            self.imageColors[i] = Color.yellow
+        case "Clouds":
+            self.images[i] = "cloud.fill"
+            self.imageColors[i] = Color.gray
+        case "Rain":
+            self.images[i] = "cloud.rain.fill"
+            self.imageColors[i] = Color.blue
+        case "Haze":
+            self.images[i] = "sun.haze"
+            self.imageColors[i] = Color.gray
+        case "Smoke":
+            self.images[i] = "smoke.fill"
+            self.imageColors[i] = Color.black
+        default:
+            self.images[i] = "cloud.fill"
+            self.imageColors[i] = Color.yellow
+        }
     }
     
     func useData(i: Int) {
@@ -31,7 +58,11 @@ class ListViewModel: ObservableObject {
             self.lowTemps[i] = self.weather.tempMin
             self.highTemps[i] = self.weather.tempMax
             
-            self.weather.printWeatherData()
+            self.setWeatherImage(i: i)
+            
+            //MARK: debug code
+//            print("Stuff \(self.weather.weatherMain)")
+//            self.weather.printWeatherData()
         }
     }
 }

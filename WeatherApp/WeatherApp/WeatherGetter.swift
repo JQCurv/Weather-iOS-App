@@ -82,6 +82,7 @@ class WeatherGetter {
     }
     
     func getWeather(city: String = "Toronto", afterDataLoaded: @escaping () -> Void) {
+        //TODO: Use geo location API instead of using city
         // This is a pretty simple networking task, so the shared session will do.
         let session = URLSession.shared
         let weatherRequestURL = NSURL(string: "\(openWeatherMapBaseURL)?APPID=\(openWeatherMapAPIKey)&q=\(city)&units=\(units)")!
