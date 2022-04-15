@@ -43,7 +43,6 @@ struct ListView: View {
                         imageColor: $viewModel.imageColors[index]
                     )
                 }
-                .foregroundColor(.black)
                 .onAppear {
                     viewModel.useData(i: index)
                 }
