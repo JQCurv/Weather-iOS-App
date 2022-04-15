@@ -13,6 +13,7 @@ struct ContentView: View {
             viewModel: ListViewModel(
                 cities: ["Newmarket",
                     "Toronto", "Tampa", "Cancun", "London", "Austin","Tokyo", "Shanghai", "Paris", "Rome", "Athens", "Prague", "Munich", "Mumbai", "Dubai"]
+                
             )
         )
     }
