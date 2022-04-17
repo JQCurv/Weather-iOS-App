@@ -18,6 +18,7 @@ struct FullWeatherView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
+            
             VStack {
                 Text("\(city)")
                     .font(.title)
