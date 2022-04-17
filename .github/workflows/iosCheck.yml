@@ -6,10 +6,16 @@ on:
   pull_request:
     branches: [ main ]
 
+concurrency:
+  group: build-ios-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-latest
+        env:
+        XCODE_VERSION: 13.3
 
     steps:
       - name: Checkout
