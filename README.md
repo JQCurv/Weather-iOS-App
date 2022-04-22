@@ -15,23 +15,6 @@ Displays:
 - Daily high and low temperatures 
 - Feels like temperature
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 
 ## Full View
 View the same data in a full screen and scrollable view by selecting a city from the scrollView
