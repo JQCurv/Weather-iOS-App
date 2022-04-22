@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    let normalCities = ["Newmarket", "Toronto", "Tampa", "Cancun", "London", "Austin","Tokyo", "Shanghai", "Paris", "Rome", "Athens", "Prague", "Munich", "Mumbai", "Dubai"]
+    let nightCities = ["Tokyo", "Shanghai", "Mumbai", "Rome", "Athens", "Prague", "Toronto", "Tampa", "Munich"]
     var body: some View {
         ListView(
             viewModel: ListViewModel(
-                cities: ["Newmarket",
-                    "Toronto", "Tampa", "Cancun", "London", "Austin","Tokyo", "Shanghai", "Paris", "Rome", "Athens", "Prague", "Munich", "Mumbai", "Dubai"]
+                cities: normalCities
             )
         )
     }
