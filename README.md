@@ -1,5 +1,5 @@
 # Weather-iOS-App
-Live weather data from [OpenWeatherMap Api](https://openweathermap.org/)
+An iOS App that displays live weather data from [OpenWeatherMap Api](https://openweathermap.org/)
 
 ## List View 
 View weather data from different cities in a scrollView
