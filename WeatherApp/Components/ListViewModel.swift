@@ -45,6 +45,9 @@ class ListViewModel: ObservableObject {
         case "Smoke":
             self.images[i] = "smoke.fill"
             self.imageColors[i] = Color.black
+        case "Mist":
+            self.images[i] = "cloud.fill"
+            self.imageColors[i] = Color.blue
         default:
             self.images[i] = "cloud.fill"
             self.imageColors[i] = Color.yellow
@@ -61,6 +64,8 @@ class ListViewModel: ObservableObject {
             self.setWeatherImage(i: i)
             
             //MARK: debug code
+            print("city: \(self.cities[i]) \t weather: \(self.weather.weatherMain)")
+//            print("date: \(unixToDate(unixTime: self.weather.dateAndTime))")
 //            print("Stuff \(self.weather.weatherMain)")
 //            self.weather.printWeatherData()
         }
