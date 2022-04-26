@@ -62,12 +62,11 @@ class ListViewModel: ObservableObject {
             self.highTemps[i] = self.weather.tempMax
             
             self.setWeatherImage(i: i)
-            
             //MARK: debug code
-            print("city: \(self.cities[i]) \t weather: \(self.weather.weatherMain)")
-//            print("date: \(unixToDate(unixTime: self.weather.dateAndTime))")
-//            print("Stuff \(self.weather.weatherMain)")
+            let date = unixToDateComps(unixTime: self.weather.dateAndTime, timeZone: self.weather.timezone)
+            print("date: \(date)")
 //            self.weather.printWeatherData()
+            
         }
     }
 }
