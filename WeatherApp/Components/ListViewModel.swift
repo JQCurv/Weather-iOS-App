@@ -17,6 +17,8 @@ class ListViewModel: ObservableObject {
     @Published var highTemps = [Double]()
     @Published var images = [String]()
     @Published var imageColors = [Color]()
+    @Published var sunriseTimes = [(hours: Int, minutes: Int)]()
+    @Published var sunsetTimes = [(hours: Int, minutes: Int)]()
     
     init (cities: [String]) {
         self.cities = cities
@@ -26,6 +28,8 @@ class ListViewModel: ObservableObject {
         highTemps = [Double](repeating: 0, count: cities.count)
         images = [String](repeating: "", count: cities.count)
         imageColors = [Color](repeating: Color.gray, count: cities.count)
+        sunriseTimes = [(hours: Int, minutes: Int)](repeating: (0, 0), count: cities.count)
+        sunsetTimes = [(hours: Int, minutes: Int)](repeating: (0, 0), count: cities.count)
     }
     
     func setWeatherImage(i: Int) {
@@ -62,11 +66,14 @@ class ListViewModel: ObservableObject {
             self.highTemps[i] = self.weather.tempMax
             
             self.setWeatherImage(i: i)
-            //MARK: debug code
-            let date = unixToDateComps(unixTime: self.weather.dateAndTime, timeZone: self.weather.timezone)
-            print("date: \(date)")
-//            self.weather.printWeatherData()
             
+            self.sunriseTimes[i] = dateToTime(unixTime: self.weather.sunrise, timeZone: self.weather.timezone)
+            self.sunsetTimes[i] = dateToTime(unixTime: self.weather.sunset, timeZone: self.weather.timezone)
+
+            //MARK: debug code
+//            let sunrise = dateToTime(unixTime: self.weather.sunrise, timeZone: self.weather.timezone)
+//            let sunset = dateToTime(unixTime: self.weather.sunset, timeZone: self.weather.timezone)
+//            print("city:\(self.cities[i]) \t sunrise: \(String(format: "%d:%02d", sunrise.hours, sunrise.minutes)) \t sunset: \(String(format: "%d:%02d", sunset.hours, sunset.minutes))")
         }
     }
 }
