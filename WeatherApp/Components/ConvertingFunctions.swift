@@ -11,42 +11,16 @@ func celciusToFarenheit (tempCel: Double) -> Double {
     return tempCel*(9/5) + 32
 }
 
-func unixToDate (unixTime: Int64) -> Date {
-    let epocTime = TimeInterval(unixTime)
-    let myDate = Date(timeIntervalSince1970: epocTime)
-    return myDate
-}
+func dateToTime (unixTime: Int64, timeZone: Int) -> (hours: Int, minutes: Int) {
+    //need to adjust for eastern timezone cause Calendar tries to put times in ET
+    let adjustment = 14400
+    let adjustedUnixTime = unixTime + Int64(timeZone) + Int64(adjustment)
+    let date = Date(timeIntervalSince1970: TimeInterval(adjustedUnixTime))
 
-func dateToComponents (date: Date, timeZone: Int) -> DateComponents {
     let calendar = Calendar.current
-    var components: DateComponents
-    if let timeZone = TimeZone(secondsFromGMT: timeZone) {
-        components = calendar.dateComponents(in: timeZone, from: date)
-    } else {
-        components = calendar.dateComponents(in: .current, from: date)
-    }
-    return components
-}
-
-func unixToDateComps (unixTime: Int64, timeZone: Int) -> DateComponents {
-    let epocTime = TimeInterval(unixTime)
-    let date = Date(timeIntervalSince1970: epocTime)
     
-    let calendar = Calendar.current
-    var components: DateComponents
-    if let timeZone = TimeZone(secondsFromGMT: timeZone) {
-        components = calendar.dateComponents(in: timeZone, from: date)
-    } else {
-        components = calendar.dateComponents(in: .current, from: date)
-    }
-    return components
-}
-
-func dateFormat (unixTime: Int64) {
-    let epocTime = TimeInterval(unixTime)
-    let date = Date(timeIntervalSince1970: epocTime)
-
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "HH:mm Z"
+    let hour = calendar.component(.hour, from: date)
+    let minute = calendar.component(.minute, from: date)
     
+    return (hour, minute)
 }
