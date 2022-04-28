@@ -43,10 +43,9 @@ struct FullWeatherView: View {
                     font: Font.title3
                 )
                 .padding()
-                //TODO: Add in sunrise/sunset
                 sunriseAndSunset
+                    .padding()
                     .font(.title3)
-                //TODO: Show timezone
                 Spacer(minLength: 16)
             }
             .frame(maxWidth: .infinity)
