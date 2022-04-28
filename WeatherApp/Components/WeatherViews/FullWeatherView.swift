@@ -15,6 +15,8 @@ struct FullWeatherView: View {
     @Binding var highTemp: Double
     @Binding var image: String
     @Binding var imageColor: Color
+    @Binding var sunrise: (hours: Int, minutes: Int)
+    @Binding var sunset: (hours: Int, minutes: Int)
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -40,11 +42,29 @@ struct FullWeatherView: View {
                     highTemp: $highTemp,
                     font: Font.title3
                 )
+                .padding()
                 //TODO: Add in sunrise/sunset
+                sunriseAndSunset
+                    .font(.title3)
                 //TODO: Show timezone
                 Spacer(minLength: 16)
             }
             .frame(maxWidth: .infinity)
+        }
+    }
+    
+    var sunriseAndSunset: some View {
+        HStack {
+            HStack {
+                Text(String(format: "%d:%02d", sunrise.hours, sunrise.minutes))
+                Image(systemName: "sunrise.fill")
+                    .foregroundColor(.yellow)
+            }
+            HStack {
+                Image(systemName: "sunset.fill")
+                    .foregroundColor(.yellow)
+                Text(String(format: "%d:%02d", sunset.hours, sunset.minutes))
+            }
         }
     }
 }
@@ -55,8 +75,10 @@ struct FullWeatherView_Previews: PreviewProvider {
     @State static var feelsLike = 0.0
     @State static var lowTemp = 0.0
     @State static var highTemp = 0.0
-    @State static var image = "Clouds"
+    @State static var image = "cloud.fill"
     @State static var imageColor = Color.gray
+    @State static var sunrise = (hours:0, minutes:0)
+    @State static var sunset = (hours:10, minutes:0)
     
     static var previews: some View {
         FullWeatherView(
@@ -66,7 +88,9 @@ struct FullWeatherView_Previews: PreviewProvider {
             lowTemp: $lowTemp,
             highTemp: $highTemp,
             image: $image,
-            imageColor: $imageColor
+            imageColor: $imageColor,
+            sunrise: $sunrise,
+            sunset: $sunset
         )
     }
 }

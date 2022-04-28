@@ -30,7 +30,9 @@ struct ListView: View {
                         lowTemp: $viewModel.lowTemps[index],
                         highTemp: $viewModel.highTemps[index],
                         image: $viewModel.images[index],
-                        imageColor: $viewModel.imageColors[index]
+                        imageColor: $viewModel.imageColors[index],
+                        sunrise: $viewModel.sunriseTimes[index],
+                        sunset: $viewModel.sunsetTimes[index]
                     )
                 } label: {
                     MiniWeatherView(
