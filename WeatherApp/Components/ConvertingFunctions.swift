@@ -11,10 +11,16 @@ func celciusToFarenheit (tempCel: Double) -> Double {
     return tempCel*(9/5) + 32
 }
 
-func unixToDate (unixTime: Int64) {
-    //TODO: Get just the hour and minute from unixTime
-    let epocTime = TimeInterval(unixTime)
+func dateToTime (unixTime: Int64, timeZone: Int) -> (hours: Int, minutes: Int) {
+    //need to adjust for eastern timezone cause Calendar tries to put times in ET
+    let adjustment = 14400
+    let adjustedUnixTime = unixTime + Int64(timeZone) + Int64(adjustment)
+    let date = Date(timeIntervalSince1970: TimeInterval(adjustedUnixTime))
+
+    let calendar = Calendar.current
     
-    let myDate = NSDate(timeIntervalSince1970: epocTime)
-    print("Converted Time \(myDate)")
+    let hour = calendar.component(.hour, from: date)
+    let minute = calendar.component(.minute, from: date)
+    
+    return (hour, minute)
 }
